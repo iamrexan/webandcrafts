@@ -26,6 +26,9 @@
   <link rel="stylesheet" href="../../../../AdminLTE-3.1.0/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="../../../../AdminLTE-3.1.0/plugins/summernote/summernote-bs4.min.css">
+  <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  @stack('custom-style')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -57,7 +60,9 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    <div class="container">
     {{ $slot }}
+    </div>
     <!-- /.content -->
   </div>
   @include('layouts.custom.footer')
@@ -104,5 +109,9 @@
 <script src="../../../../AdminLTE-3.1.0/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../../../../AdminLTE-3.1.0/dist/js/pages/dashboard.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+@stack('custom-script')
 </body>
 </html>
