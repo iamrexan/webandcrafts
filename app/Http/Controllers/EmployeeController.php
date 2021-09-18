@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
+use DataTables;
 use App\Models\User;
+use App\Models\Employee;
 use App\Models\Designation;
 use Illuminate\Http\Request;
-use DataTables;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
+use App\Mail\SendEmployeeConfirmation;
 
 class EmployeeController extends Controller
 {
@@ -67,7 +69,10 @@ class EmployeeController extends Controller
           $image->move($destinationPath, $profileImage);
           $input['photo'] = "$profileImage";
         }  
-        Employee::create($input);
+        $input['password'] = Hash::make(config('app.default_employee_password'));
+        // dd($input['password']);
+        $data = Employee::create($input);
+        \Mail::to($data->email)->send(new SendEmployeeConfirmation($data));
 
         return redirect()->route('employee.index')
                         ->with('success', 'Employee created successfully.');

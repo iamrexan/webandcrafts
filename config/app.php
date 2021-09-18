@@ -123,6 +123,9 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+
+    'default_employee_password' => 'test1234',
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
